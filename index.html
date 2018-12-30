@@ -31,7 +31,21 @@
             <div class="jumbotron jumbotron-fluid text-center p-2">
                 <div class="container">
                     <h1 class="display-4">Earthquake Mapper</h1>
-                    <p class="lead">Please select a timeframe for USGS earthquake data to display.</p>
+                    <p class="lead mb-2">Please select a timeframe for USGS earthquake data to display.</p>
+                    
+                    <form class="form-inline d-flex justify-content-center">
+                        <div class="form-group p-2">
+                            <select class="custom-select" id="inputType" name = "dataType">
+                                <option selected value="hour">Past Hour</option>
+                                <option value="day">Past Day</option>
+                                <option value="week">Past 7 Days</option>
+                                <option value="month">Past 30 Days</option>
+                            </select>
+                        </div>
+                        <button id="submit" type="submit" class="btn btn-default">Select Data</button>
+                    </form>
+
+
                 </div>
             </div>  <!-- End Jumbotron -->
 
