@@ -16,15 +16,21 @@ function timeConverter(UNIX_timestamp){
 
 // Functions for determining circle attributes
 function circleColor(mag){ 
-    if(mag < 3){
+    if(mag < 2){
         // Not normally felt
         return '#FF6699';
-    } else if(mag < 5){
+    } else if(mag < 3){
         // Felt
-        return '#CC4488';
-    } else if(mag < 7){
+        return '#E0528F';
+    } else if(mag < 4){
+        // Felt
+        return '#C23D85';
+    } else if(mag < 5){
         // Damage
-        return '#992277';
+        return '#A3297A';
+    } else if(mag < 6){
+        // Damage
+        return '#851470';
     } else {
         // Great earthquake. Can totally destroy communities.
         return '#660066';
@@ -32,13 +38,19 @@ function circleColor(mag){
 }
 
 function circleSize(mag){
-    if(mag < 3){
+    if(mag < 2){
         // Not normally felt
         return 4;
-    } else if(mag < 5){
+    } else if(mag < 3){
         // Felt
-        return 12;
-    } else if(mag < 7){
+        return 7;
+    } else if(mag < 4){
+        // Felt
+        return 10;
+    } else if(mag < 5){
+        // Damage
+        return 15;
+    } else if(mag < 6){
         // Damage
         return 20;
     } else {
@@ -99,20 +111,20 @@ d3.json(url, function(data) {
     // Create legend
     legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend');
-        var grades = [1.0, 2.9, 4.9, 6.9];
+        var grades = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
         var labels = [];
 
         // square colors and labels
         for (var i = 0; i < grades.length; i++) {
-            if (i === 0){
+            // if (i === 0){
+            //     div.innerHTML +=
+            //     '<i style="background:' + circleColor(grades[i] + 1) + '"></i> ' +
+            //     grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
+            // } else {
                 div.innerHTML +=
-                '<i style="background:' + circleColor(grades[i] + 1) + '"></i> ' +
-                grades[i] + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
-            } else {
-                div.innerHTML +=
-                '<i style="background:' + circleColor(grades[i] + 1) + '"></i> ' +
-                (grades[i] + .1) + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
-            }
+                '<i style="background:' + circleColor(grades[i]) + '"></i> ' +
+                (grades[i]) + (grades[i + 1] ? ' &ndash; ' + grades[i + 1] + '<br>' : '+');
+            // }
         }
         return div;
     };
